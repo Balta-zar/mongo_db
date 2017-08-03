@@ -48,19 +48,18 @@ def decode_columns(columns):
 
 
 def create_headers():
-    result = [((i + 1) % 255) for i in xrange(500)]
-    result = bytearray(result)
-    result = base64.b64encode(result)
-    return result
+    big_array = [((i + 1) % 255) for i in xrange(500)]
+    big_array = bytearray(big_array)
+    big_array = base64.b64encode(big_array)
+    return big_array
 
 def create_columns():
-    result = [[((y + 1) % 255) for y in xrange(500)] for x in xrange(10000)]
-    # result = [['a' for y in xrange(500)] for x in xrange(10000)]
+    big_matrix = [[((y + 1) % 255) for y in xrange(500)] for x in xrange(10000)]
 
-    result2 = []
-    for row in result:
+    result = []
+    for row in big_matrix:
         # row=bytes(row)
         # result2.append(bytes(row))
         row = bytearray(row)
-        result2.append(base64.b64encode(row))
-    return result2
+        result.append(base64.b64encode(row))
+    return result
